@@ -1,0 +1,32 @@
+<SCRIPT>
+function BrowserCheck() {
+        var b = navigator.appName
+        if (b=="Netscape") this.b = "ns"
+        else if (b=="Microsoft Internet Explorer") this.b = "ie"
+        else this.b = b
+        this.version = navigator.appVersion
+        this.v = parseInt(this.version)
+        this.ns = (this.b=="ns" && this.v>=4)
+        this.ns4 = (this.b=="ns" && this.v==4)
+        this.ns5 = (this.b=="ns" && this.v==5)
+        this.ie = (this.b=="ie" && this.v>=4)
+        this.ie4 = (this.version.indexOf('MSIE 4')>0)
+        this.ie5 = (this.version.indexOf('MSIE 5')>0)
+        this.min = (this.ns||this.ie)
+}
+is = new BrowserCheck()
+
+
+    document.onmousedown = mouseDown
+    if (is.ns) document.captureEvents(Event.MOUSEDOWN)
+
+function mouseDown(e) {
+        if ((is.ns && e.which == 1) || (is.ie && event.button == 1)) {
+                }
+        else {
+                if (is.ie) alert("De rechtermuisknop doet het niet meer.")
+                else if (is.ns) setTimeout('alert("Right mouse button has been disabled.")',50)
+                }
+        }
+//-->
+</SCRIPT>
